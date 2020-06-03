@@ -1,5 +1,5 @@
 # UdemyMaxSchwarz_JS
-## The Complete Guide (2020) all the way up to JS expert level! THE must-have JavaScript resource in 2020.
+## The Complete Guide (2020) all the way up to JS expert level! THE must-have JavaScript resource in 2020
 
 This course is obviously packed with content - I therefore strongly recommend that you check out the full course curriculum to get a clear idea of all the topics covered in the course. In general, here's what you'll find in the course:
 
