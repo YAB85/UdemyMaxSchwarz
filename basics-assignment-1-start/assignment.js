@@ -9,3 +9,18 @@ result = result / 4;
 
 alert(result);
 alert(input);
+
+
+function art() {
+    alert('Hi');
+}
+
+function anotherFun(name) {
+    alert(name);
+}
+
+art();
+
+anotherFun('Jim');
+
+add

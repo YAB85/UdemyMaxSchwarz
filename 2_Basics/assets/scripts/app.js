@@ -145,26 +145,21 @@ obj.sum(); */
 const defaultResult = 0;
 let currentResult = defaultResult;
 
-function add(num1, num2) {
-	const result = num1 + num2;
-	alert();
+function add() {
+	currentResult = currentResult + userInput.value;
+	outputResult(currentResult, '');
 }
 
+addBtn.addEventListener('click', add);
 
-currentResult = (currentResult + 10) * 3 / 2 - 1;
 
-let calculationDescription = `(${defaultResult} + 10) * 3 / 2  - 1`;
-
-outputResult(currentResult, calculationDescription);
-
-let score = {
+/* let score = {
 	'Fedor': 0,
 	'Petya': 0
 }
 
 score.Fedor += 100;
-score.Petya += 50;
-
+score.Petya += 50; */
 
 /* let myCrazyObject = {
 	"name": "Object",
@@ -234,16 +229,16 @@ console.log(output); */
 // Create Game//
 
 //Create random word
-let words = [
+/* let words = [
 	"programm",
 	"makaka",
 	"beautiful",
 	"pancake"
-];
+]; */
 
 //create final array
 
-let word = words[Math.floor(Math.random() * words.length)];
+/* let word = words[Math.floor(Math.random() * words.length)];
 
 let answerArray = [];
 for (let i = 0; i < word.length; i++) {
@@ -279,4 +274,87 @@ if (guesses > 0) {
 	alert("Very good! You are a winner" + word);
 } else {
 	alert("Very bad! You are lose" + word);
+} */
+
+//Bubble sort
+/* let unsortedArr = [ 10, 5, 9, 7, 12, 55, 3, 5, 2, 4 ];
+
+let swapped;
+ */
+/* function bubbleSort(arr) {
+	swapped = false;
+	let end = arr.length - 1;
+	for (let i = 0; i < end; i++) {
+		if (arr[i] > arr[i + 1]) {
+			swapped = true;
+			let temp = arr[i];
+			arr[i] = arr[i + 1];
+			arr[i + 1] = temp;
+		}
+	}
+	end--;
+} */
+/* function bubbleSort(arr) {
+	swapped = false;
+	let end = arr.length - 1;
+	for (let i = 0, j = 1; i < end; i++, j++) {
+		if (arr[i] > arr[j]) {
+			swapped = true;
+			[ arr[i], arr[j] ] = [ arr[j], arr[i] ];
+		}
+	}
+	end--;
 }
+do {
+	bubbleSort(unsortedArr);
+} while (swapped);
+
+console.log(unsortedArr); */
+
+//Selection sort//
+//const arr = [ 7, 9, 3, 5, 15, 10, 0 ];
+
+/* const selectionSort = arr => {
+	const len = arr.length;
+	
+	for (let i = 0; i < len; i++) {
+		let idxOfMin = i;
+
+		for (let j = i + 1; j < len; j++) {
+			if (arr[j] < arr[idxOfMin]) {
+				idxOfMin = j;
+			}
+		}
+		if (idxOfMin !== i) {
+			//swap
+			const temp = arr[idxOfMin];
+			arr[idxOfMin] = arr[i];
+			arr[i] = temp;
+		}
+	}
+
+	return arr;
+}; */
+/* const selectionSort = arr => {
+	const len = arr.length;
+	const swap = (arr, idx1, idx2) => {
+		[ arr[idx1], arr[idx2] ] = [ arr[idx2], arr[idx1] ];
+	};
+
+	for (let i = 0; i < len; i++) {
+		let idxOfMin = i;
+
+		for (let j = i + 1; j < len; j++) {
+			if (arr[j] < arr[idxOfMin]) {
+				idxOfMin = j;
+			}
+		}
+		if (idxOfMin !== i) swap(arr, idxOfMin, i);
+	}
+
+	return arr;
+};
+
+selectionSort(arr);
+console.log(arr);
+ */
