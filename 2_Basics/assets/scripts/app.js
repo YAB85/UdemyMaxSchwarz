@@ -146,10 +146,13 @@ const defaultResult = 0;
 let currentResult = defaultResult;
 let logEntries = [];
 
+//Gets input from input field
+
 function getUserNumberInput() {
 	return parseInt(userInput.value);
 }
 
+//Generates and writes calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
 	const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
 	outputResult(currentResult, calcDescription);
@@ -278,29 +281,84 @@ console.log(output); */
 //let name = prompt("What is your name?");
 // Create Game//
 
-//Create random word
-/* let words = [
-	"programm",
-	"makaka",
-	"beautiful",
-	"pancake"
-]; */
+
 
 //create final array
 
-/* let word = words[Math.floor(Math.random() * words.length)];
 
-let answerArray = [];
-for (let i = 0; i < word.length; i++) {
-	answerArray[i] = "_";
+
+let guesses = 20;
+
+
+let pickWord = function () {
+
+	//return random word
+	let words = [
+		"programm",
+		"makaka",
+		"beautiful",
+		"pancake"
+	];
+	return words[Math.floor(Math.random() * words.length)];
 }
 
-let remainingLetters = word.length;
-let guesses = 20
+let setupAnswerArray = function (word) {
+	//return finished arr for choisen word
+	let answerArray = [];
+	for (let i = 0; i < word.length; i++) {
+		answerArray[i] = "_";
+	}
+	return answerArray;
+}
+
+let showPlayerProgress = function (answerArray) {
+	//show game status
+
+	alert(answerArray.join(" "));
+}
+
+let getGuess = function () {
+	//Asked player with prompt
+	return prompt("Please guess the letter?");
+}
+
+let updateGameStatus = function (guess, word, answerArray) {
+	// Обновляет answerArray согласно ответу игрока (guess)
+	// возвращает число, обозначающее, сколько раз буква guess
+	// встречается в слове, чтобы можно было обновить значение
+	// remainingLetters
+
+	let appearances = 0;
+	for (let j = 0; j < word.length; j++) {
+		if (word[j] === guess) {
+			answerArray[j] = guess;
+			appearances++;
+		}
+		return appearances;
+	}
+}
+
+let showAnswerAndCongratulePlayer = function (answerArray) {
+
+	showPlayerProgress(answerArray);
+	alert("Very well! You guess the word " + answerArray.join(''));
+};
+
+
+// word: загаданное слово
+var word = pickWord();
+// answerArray: итоговый массив
+var answerArray = setupAnswerArray(word);
+// remainingLetters: сколько букв осталось угадать
+var remainingLetters = word.length;
+
+
+
+
 
 while (remainingLetters > 0 && guesses > 0) {
-	alert(answerArray.join(" "));
-	let guess = prompt("Please, choise a letter or press Cancel");
+	showPlayerProgress(answerArray);
+	let guess = getGuess();
 	if (guess === null || guess == 1) {
 		break;
 	} else if (guess.length !== 1) {
@@ -308,25 +366,20 @@ while (remainingLetters > 0 && guesses > 0) {
 	} else {
 		guesses--;
 		guess = guess.toLowerCase();
-		for (let j = 0; j < word.length; j++) {
-			if (word[j] === guess) {
-				answerArray[j] = guess;
-				remainingLetters--;
-			}
-		}
+		let correctGuess = updateGameStatus(guess, word, answerArray);
+		remainingLetters -= correctGuess;
 	}
 }
 
+showAnswerAndCongratulePlayer(answerArray);
 
 
-alert(answerArray.join(" "));
-if (guesses > 0) {
-	alert("Very good! You are a winner" + word);
-} else {
-	alert("Very bad! You are lose" + word);
-} */
+
+
 
 //Bubble sort
+
+
 /* let unsortedArr = [ 10, 5, 9, 7, 12, 55, 3, 5, 2, 4 ];
 
 let swapped;
@@ -362,6 +415,8 @@ do {
 console.log(unsortedArr); */
 
 //Selection sort//
+
+
 //const arr = [ 7, 9, 3, 5, 15, 10, 0 ];
 
 /* const selectionSort = arr => {
@@ -408,3 +463,39 @@ console.log(unsortedArr); */
 selectionSort(arr);
 console.log(arr);
  */
+
+//JS for kids Function
+
+/* function add(x, y) {
+	return x + y;
+}
+
+function multiply(x, y) {
+	return x * y;
+}
+
+let result = add(multiply(36325, 9824), 777);
+console.log(result); */
+/* let arr1 = [1, 2, 3];
+let arr2 = [1, 2, 4];
+
+let checkArr = function (arr1, arr2) {
+	if (arr1.length !== arr2.length) {
+		return false;
+	}
+
+	for (let i = 0; i < arr1.length; i++) {
+		if (arr1[i] !== arr2[i]) {
+			return false;
+		}
+	}
+
+	return true;
+} */
+
+
+
+
+console.log(checkArr(arr1, arr2));
+console.log(checkArr([1, 2, 3], [1, 2, 3]));
+console.log(checkArr([1, 2, 3, 4], [1, 4, 5, 7]));
