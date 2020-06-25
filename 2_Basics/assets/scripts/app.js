@@ -281,53 +281,40 @@ console.log(output); */
 //let name = prompt("What is your name?");
 // Create Game//
 
-
-
 //create final array
 
-
-
-let guesses = 20;
-
-
-let pickWord = function () {
-
+/* let pickWord = function() {
 	//return random word
-	let words = [
-		"programm",
-		"makaka",
-		"beautiful",
-		"pancake"
-	];
+	let words = [ 'programm', 'makaka', 'beautiful', 'pancake' ];
 	return words[Math.floor(Math.random() * words.length)];
-}
+};
 
-let setupAnswerArray = function (word) {
+let setupAnswerArray = function(word) {
 	//return finished arr for choisen word
 	let answerArray = [];
 	for (let i = 0; i < word.length; i++) {
-		answerArray[i] = "_";
+		answerArray[i] = '_';
 	}
 	return answerArray;
-}
+};
 
-let showPlayerProgress = function (answerArray) {
+let showPlayerProgress = function(answerArray) {
 	//show game status
+	
+	alert(answerArray.join(' '));
+};
 
-	alert(answerArray.join(" "));
-}
-
-let getGuess = function () {
+let getGuess = function() {
 	//Asked player with prompt
-	return prompt("Please guess the letter?");
-}
+	return prompt('Please guess the letter?');
+};
 
-let updateGameStatus = function (guess, word, answerArray) {
+let updateGameStatus = function(guess, word, answerArray) {
 	// Обновляет answerArray согласно ответу игрока (guess)
 	// возвращает число, обозначающее, сколько раз буква guess
 	// встречается в слове, чтобы можно было обновить значение
 	// remainingLetters
-
+	
 	let appearances = 0;
 	for (let j = 0; j < word.length; j++) {
 		if (word[j] === guess) {
@@ -336,25 +323,21 @@ let updateGameStatus = function (guess, word, answerArray) {
 		}
 		return appearances;
 	}
-}
-
-let showAnswerAndCongratulePlayer = function (answerArray) {
-
-	showPlayerProgress(answerArray);
-	alert("Very well! You guess the word " + answerArray.join(''));
 };
 
+let showAnswerAndCongratulePlayer = function(answerArray) {
+	showPlayerProgress(answerArray);
+	alert('Very well! You guess the word ' + answerArray.join(''));
+};
 
 // word: загаданное слово
-var word = pickWord();
+let word = pickWord();
 // answerArray: итоговый массив
-var answerArray = setupAnswerArray(word);
+let answerArray = setupAnswerArray(word);
 // remainingLetters: сколько букв осталось угадать
-var remainingLetters = word.length;
+letter remainingLetters = word.length;
 
-
-
-
+let guesses = 20;
 
 while (remainingLetters > 0 && guesses > 0) {
 	showPlayerProgress(answerArray);
@@ -362,7 +345,7 @@ while (remainingLetters > 0 && guesses > 0) {
 	if (guess === null || guess == 1) {
 		break;
 	} else if (guess.length !== 1) {
-		alert("Please, insert letter")
+		alert('Please, insert letter');
 	} else {
 		guesses--;
 		guess = guess.toLowerCase();
@@ -372,13 +355,8 @@ while (remainingLetters > 0 && guesses > 0) {
 }
 
 showAnswerAndCongratulePlayer(answerArray);
-
-
-
-
-
+ */
 //Bubble sort
-
 
 /* let unsortedArr = [ 10, 5, 9, 7, 12, 55, 3, 5, 2, 4 ];
 
@@ -415,7 +393,6 @@ do {
 console.log(unsortedArr); */
 
 //Selection sort//
-
 
 //const arr = [ 7, 9, 3, 5, 15, 10, 0 ];
 
@@ -493,9 +470,6 @@ let checkArr = function (arr1, arr2) {
 	return true;
 } */
 
-
-
-
-console.log(checkArr(arr1, arr2));
+/* console.log(checkArr(arr1, arr2));
 console.log(checkArr([1, 2, 3], [1, 2, 3]));
-console.log(checkArr([1, 2, 3, 4], [1, 4, 5, 7]));
+console.log(checkArr([1, 2, 3, 4], [1, 4, 5, 7])); */
