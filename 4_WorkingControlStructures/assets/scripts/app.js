@@ -29,8 +29,26 @@ function writeToLog(operationIndentifier, prevResult, operationNumber, newResult
 
 function calculateResult(calculationType) {
 	const enteredNumber = getUserNumberInput();
+	if (
+		(calculateResult !== 'ADD' &&
+			calculateResult !== 'SUBSTRACT' &&
+			calculateResult !== 'MULTIPLY' &&
+			calculateResult !== 'DIVIDE') ||
+		!enteredNumber
+	) {
+		return;
+	}
+
+	/* if (
+		calculateResult !== 'ADD' ||
+		calculateResult !== 'SUBSTRACT' ||
+		calculateResult !== 'MULTIPLY' ||
+		calculateResult !== 'DIVIDE'
+	) { */
+
 	const initialResult = currentResult;
 	let mathOperator;
+
 	if (calculationType === 'ADD') {
 		currentResult += enteredNumber;
 		mathOperator = '+';
@@ -40,7 +58,7 @@ function calculateResult(calculationType) {
 	} else if (calculationType === 'MULTIPLY') {
 		currentResult *= enteredNumber;
 		mathOperator = '*';
-	} else {
+	} else if (calculationType === 'DIVIDE') {
 		currentResult /= enteredNumber;
 		mathOperator = '/';
 	}
@@ -119,10 +137,10 @@ for (let j = 0; j < 10; j++) {
 }
  */
 
-const numbers = [ 1, 2, 3, 4, 5 ];
+/* const numbers = [ 1, 2, 3, 4, 5 ];
 
 let variable = numbers.push(6);
 variable = variable.pop();
 variable = variable.push(10);
 
-console.log(variable);
+console.log(variable); */
