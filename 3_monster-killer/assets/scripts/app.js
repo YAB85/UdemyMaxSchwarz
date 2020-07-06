@@ -11,7 +11,6 @@ const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
-
 const enteredValue = prompt('Maximum life for you and the monster', '100');
 
 let chosenMaxLife = parseInt(enteredValue);
@@ -110,18 +109,18 @@ function endRound() {
 }
 
 function attackMonster(mode) {
-	let maxDamage;
-	let logEvent;
-	if (mode === MODE_ATTACK) {
+	const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+	const logEvent = mode === MODE_ATTACK ? LOG_EVENT_PLAYER_ATTACK : LOG_EVENT_PLAYER_STRONG_ATTACK;
+	/* if (mode === MODE_ATTACK) {
 		maxDamage = ATTACK_VALUE;
 		logEvent = LOG_EVENT_PLAYER_ATTACK;
 	} else if (mode === MODE_STRONG_ATTACK) {
 		maxDamage = STRONG_ATTACK_VALUE;
 		logEvent = LOG_EVENT_PLAYER_STRONG_ATTACK;
-	}
+	} */
 	const damage = dealMonsterDamage(ATTACK_VALUE);
 	currentMosterHealth -= damage;
-	writeToLog(logEvent, damage, currentMosterHealth, currentPlayerHealth)
+	writeToLog(logEvent, damage, currentMosterHealth, currentPlayerHealth);
 
 	endRound();
 }
@@ -144,7 +143,7 @@ function healPlayerHandler() {
 	}
 	increasePlayerHealth(HEAL_VALUE);
 	currentPlayerHealth += HEAL_VALUE;
-	writeToLog(LOG_EVENT_PLAYER_HEAL, healValue, currentMosterHealth, currentPlayerHealth)
+	writeToLog(LOG_EVENT_PLAYER_HEAL, healValue, currentMosterHealth, currentPlayerHealth);
 	endRound();
 }
 
@@ -156,3 +155,26 @@ attackBtn.addEventListener('click', attackHandler);
 strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
 logBtn.addEventListener('click', printLogHandler);
+
+//const userName = userInput || 'Max';
+
+// operator || //
+
+/* let realUserInput = 'Manu';
+
+let realUserName = realUserInput || 'Max';
+console.log(realUserName);
+ */
+
+let isLoggedIn = true;
+
+var shoppingCart = isLoggedIn && [ 'Books' ];
+
+console.log(shoppingCart);
+
+isLoggedIn = false;
+
+isLoggedIn && [ 'Books' ];
+
+var shoppingCart = isLoggedIn && [ 'Books' ];
+console.log(shoppingCart);
