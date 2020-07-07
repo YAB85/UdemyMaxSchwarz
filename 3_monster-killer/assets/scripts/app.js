@@ -36,7 +36,50 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 			finalMonsterHealth: monsterHealth,
 			finalPlayerHealth: playerHealth
 		};
-	} else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
+		switch (ev) {
+			case LOG_EVENT_PLAYER_ATTACK:
+				logEntry.target = 'MONSTER';
+				break;
+			case LOG_EVENT_PLAYER_STRONG_ATTACK:
+				logEntry = {
+					event: ev,
+					value: val,
+					target: 'MONSTER',
+					finalMonsterHealth: monsterHealth,
+					finalPlayerHealth: playerHealth
+				};
+				break;
+			case LOG_EVENT_MONSTER_ATTACK:
+				logEntry = {
+					event: ev,
+					value: val,
+					target: 'PLAYER',
+					finalMonsterHealth: monsterHealth,
+					finalPlayerHealth: playerHealth
+				};
+				break;
+			case LOG_EVENT_PLAYER_HEAL:
+				logEntry = {
+					event: ev,
+					value: val,
+					target: 'PLAYER',
+					finalMonsterHealth: monsterHealth,
+					finalPlayerHealth: playerHealth
+				};
+				break;
+			case LOG_EVENT_GAME_OVER:
+				logEntry = {
+					event: ev,
+					value: val,
+					finalMonsterHealth: monsterHealth,
+					finalPlayerHealth: playerHealth
+				};
+				break;
+			default:
+				logEntry = {};
+		}
+
+		/* 	} else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
 		logEntry = {
 			event: ev,
 			value: val,
@@ -67,13 +110,14 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
 			finalMonsterHealth: monsterHealth,
 			finalPlayerHealth: playerHealth
 		};
-	}
-	battleLog.push(logEntry);
+	} */
+		battleLog.push(logEntry);
 
-	function reset() {
-		currentMosterHealth = chosenMaxLife;
-		currentPlayerHealth = chosenMaxLife;
-		resetGame(chosenMaxLife);
+		function reset() {
+			currentMosterHealth = chosenMaxLife;
+			currentPlayerHealth = chosenMaxLife;
+			resetGame(chosenMaxLife);
+		}
 	}
 }
 
@@ -148,7 +192,31 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-	console.log(battleLog);
+	/* for (let i = 0; i < 3; i++) {
+		console.log('----------');
+	} */
+	/* for (let i = 10; i > 0; i--) {
+		console.log(i);
+	 */
+
+	/* let j = 0;
+	while (j < 3) {
+		console.log('-------');
+		j++;
+	} */
+
+	/* for (let i = 0; i < battleLog.length; i++) {
+		console.log(battleLog[i]);
+	} */
+	let i = 0;
+	for (const el of battleLog) {
+		console.log(`#${i}`);
+		for (const key in el) {
+			console.log(`${key} => ${el[key]}`);
+		}
+		i++;
+	}
+	//console.log(battleLog);
 }
 
 attackBtn.addEventListener('click', attackHandler);
@@ -166,7 +234,7 @@ let realUserName = realUserInput || 'Max';
 console.log(realUserName);
  */
 
-let isLoggedIn = true;
+/* let isLoggedIn = true;
 
 var shoppingCart = isLoggedIn && [ 'Books' ];
 
@@ -178,3 +246,41 @@ isLoggedIn && [ 'Books' ];
 
 var shoppingCart = isLoggedIn && [ 'Books' ];
 console.log(shoppingCart);
+
+
+/*const userName = 'Max';
+const altName = '';
+console.log(userName === 'Max'); // generates and prints a boolean => true
+console.log(userName); // wasn't touched, still is a string => 'Max'
+ 
+console.log(userName || null); // userName is truthy and therefore returned by || => 'Max'
+console.log(altName || 'Max'); // altName is falsy (empty string), hence 'Max' is returned => 'Max'
+console.log(altName || ''); // both altName and '' are falsy but if the first operand is falsy, the second one is always returned => ''
+console.log(altName || null || 'Anna'); // altName and null are falsy, 'Anna' is returned => 'Anna'
+ 
+console.log(userName && 'Anna'); // userName is truthy, hence second (!) value is returned => 'Anna'
+console.log(altName && 'Anna'); // altName is falsy, hence first value is returned => ''
+console.log(userName && ''); // userName is truthy, hence second value is returned => ''
+
+const enteredValue = ''; // let's assume this is set based on some input provided by the user, therefore it might be an empty string
+ 
+const userName = enteredValue || 'PLACEHOLDER'; // will assign 'PLACEHOLDER' if enteredValue is an empty string */
+
+let randomNumbers = [];
+let finished = false;
+while (!finished) {
+	const rndNumber = Math.random();
+	randomNumbers.push(rndNumber);
+	if (rndNumber > 0.5) {
+		finished = true;
+		console.log(randomNumbers);
+	}
+}
+
+let sum = 0;
+for (let i = 0; i < 3; i++) {
+	for (let j = 5; j > 2; j--) {
+		sum = sum + j + i;
+	}
+}
+console.log(sum);
