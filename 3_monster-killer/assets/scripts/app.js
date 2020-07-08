@@ -11,14 +11,28 @@ const LOG_EVENT_MONSTER_ATTACK = 'MONSTER_ATTACK';
 const LOG_EVENT_PLAYER_HEAL = 'PLAYER_HEAL';
 const LOG_EVENT_GAME_OVER = 'GAME_OVER';
 
-const enteredValue = prompt('Maximum life for you and the monster', '100');
-
-let chosenMaxLife = parseInt(enteredValue);
-let battleLog = [];
-
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
-	chosenMaxLife = 100;
+function getMaxLifeValues() {
+	const enteredValue = prompt('Maximum life for you and the monster', '100');
+	const parsedValue = parseInt(enteredValue);
+	if (isNaN(parsedValue) || parsedValue <= 0) {
+		throw { message: 'Invalid user input, not a number!' };
+		//chosenMaxLife = 100;
+	}
+	return parsedValue;
 }
+
+let chosenMaxLife;
+
+try {
+	chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+	console.log(error);
+	chosenMaxLife = 100;
+	alert('You entered something wrong, default value of 100 was used');
+}
+
+let battleLog = [];
+let lastLoggedEntry;
 
 let currentMosterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
@@ -192,28 +206,36 @@ function healPlayerHandler() {
 }
 
 function printLogHandler() {
-	/* for (let i = 0; i < 3; i++) {
+	for (let i = 0; i < 3; i++) {
 		console.log('----------');
-	} */
-	/* for (let i = 10; i > 0; i--) {
-		console.log(i);
-	 */
+	}
 
-	/* let j = 0;
-	while (j < 3) {
-		console.log('-------');
+	let j = 3;
+	outerWhile: do {
+		console.log('Outer');
+		innerFor: for (let k = 0; k < 5; k++) {
+			if (k === 3) {
+				break outerWhile;
+			}
+			console.log('Inner', k);
+		}
 		j++;
-	} */
+	} while (j < 3);
 
 	/* for (let i = 0; i < battleLog.length; i++) {
 		console.log(battleLog[i]);
 	} */
 	let i = 0;
-	for (const el of battleLog) {
-		console.log(`#${i}`);
-		for (const key in el) {
-			console.log(`${key} => ${el[key]}`);
+	for (const logEntry of battleLog) {
+		if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
+			console.log(`#${i}`);
+			for (const key in logEntry) {
+				console.log(`${key} => ${logEntry[key]}`);
+			}
+			lastLoggedEntry = i;
+			break;
 		}
+
 		i++;
 	}
 	//console.log(battleLog);
@@ -277,10 +299,25 @@ while (!finished) {
 	}
 }
 
-let sum = 0;
+let out = document.querySelector('.loops');
+//console.log(out);
+
+/* let sum = 0;
 for (let i = 0; i < 3; i++) {
 	for (let j = 5; j > 2; j--) {
 		sum = sum + j + i;
+		out.innerHTML += sum;
+
 	}
+	out.innerHTML += `  ${sum}`;
+	out.innerHTML += ' ';
+
 }
-console.log(sum);
+console.log(sum); */
+
+for (let i = 1; i < 10; i++) {
+	for (let j = 1; j < 10; j++) {
+		out.innerHTML += `${i}*${j} = ${j * i}<br>  `;
+	}
+	out.innerHTML += '<hr>';
+}
