@@ -28,8 +28,9 @@ try {
 } catch (error) {
 	console.log(error);
 	chosenMaxLife = 100;
-	alert('You entered something wrong, default value of 100 was used');
-}
+	alert('You entered something wrong, default value of 100 was used'); 
+	//throw error;
+} 
 
 let battleLog = [];
 let lastLoggedEntry;
