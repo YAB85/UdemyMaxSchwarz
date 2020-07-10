@@ -43,11 +43,26 @@ function greet() {
 //console.log(name, age);
 greet(); */
 
-console.log(userName);
+/* console.log(userName);
 
 var userName = 'Max';
 'use strict';
 
 console.log(name);
 
-const name = 'Max';
+const name = 'Max'; */
+
+const addListenerBtn = document.getElementById('add-listener-btn');
+const clickableBtn = document.getElementById('clickable-btn');
+const messageInput = document.getElementById('click-message-input');
+
+function printmessage() {
+	const value = messageInput.value;
+	console.log(value || 'Clicked me!');
+}
+
+function addListener() {
+	clickableBtn.addEventListener('click', printmessage);
+}
+
+addListenerBtn.addEventListener('click', addListener);
