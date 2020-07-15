@@ -7,17 +7,20 @@ html,
 body {
   font-family: Arial;
   font-size: 18px;
+  text-align: center;
 }
 
 .container {
-  margin: 20px auto;
+  margin: 40px auto;
+
   max-width: 1000px;
+
 }
 
 select,
 input,
 button {
-  padding: 8px;
+  padding: 18px;
   font-size: 1rem;
 }
 
@@ -53,4 +56,13 @@ button {
 .array::after {
   content: "]";
   font-size: 5rem;
+}
+
+.image {
+  height: 100px;
+  width: 100px;
+}
+
+.out-1-source-image {
+  padding: 30px;
 }
