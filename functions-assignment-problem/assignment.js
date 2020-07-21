@@ -65,6 +65,17 @@ setTimeout(hello, 2000, 'Bob');
 let names = ['Inga', 'Tom', 'Mattias', 'Carlos'];
 names.forEach(hello);
 
+navigator.geolocation.getCurrentPosition(gotPosition, positionError, {});
+
+function gotPosition(pos) {
+
+}
+
+function positionError(err) {
+
+}
+
+
 function doThing(other) {
   let x = 7;
   //

@@ -31,13 +31,13 @@ const getComputerChoice = () => {
 };
 
 const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
-	cChoice === pChoice
-		? RESULT_DRAW
-		: (cChoice === ROCK && pChoice == PAPER) ||
-			(cChoice === PAPER && pChoice === SCISSORS) ||
-			(cChoice === SCISSORS && pChoice === ROCK)
-			? RESULT_PLAYER_WINS
-			: RESULT_COMPUTER_WINS;
+	cChoice === pChoice ?
+	RESULT_DRAW :
+	(cChoice === ROCK && pChoice == PAPER) ||
+	(cChoice === PAPER && pChoice === SCISSORS) ||
+	(cChoice === SCISSORS && pChoice === ROCK) ?
+	RESULT_PLAYER_WINS :
+	RESULT_COMPUTER_WINS;
 
 /* {
 		if (cChoice === pChoice) {
@@ -82,35 +82,41 @@ startGameBtn.addEventListener('click', () => {
 
 //not related to game
 
-const sumUp = (resultHandler, ...numbers) => {
+const combine = (resultHandler, operator, ...numbers) => {
 	const validateNumber = number => {
 		return isNaN(number) ? 0 : number;
 	};
 
 	let sum = 0;
 	for (let num of numbers) {
-		sum += num;
+		if (operator === 'ADD') {
+			sum += validateNumber(num);
+		} else {
+			sum += validateNumber(num);
+		}
 	}
 	resultHandler(sum);
 };
 
-const showResult = result => {
-	alert('The result after adding all numbers is: ' + result);
-};
-
-const subtractUp = function() {
+/* const subtractUp = function(resultHandler, ...numbers) {
 	let sum = 0;
-	for (const num of arguments) {
+	for (const num of numbers) {
 		// don`t use that
 		sum -= num;
 	}
-	return sum;
+	resultHandler(sum, 'The result after adding all numbers is: ');
+}; */
+
+/* const showResult = (messageText, result) => {
+	alert(messageText + ' ' + result);
 };
 
-sumUp(showResult, 1, 5, 10, -3, 6, 10);
-sumUp(showResult, 1, 5, 10, -3, 6, 10, 25, 88);
-console.log(subtractUp(1, 10, 15, 20));
+showResult.apply()
 
+combine(showResult.bind(this, 'The result after adding all numbers is:'), 'ADD', 1, 5, 10, -3, 6, 10);
+combine(showResult.bind(this, 'The result after adding all numbers is:'), 'ADD', 1, 5, 10, -3, 6, 10, 25, 88);
+combine(showResult.bind(this, 'The result after adding all numbers is:'), 'SUBTRACK', 1, 10, 15, 20);
+ */
 /* start();
 
 function start() {
@@ -151,3 +157,43 @@ for (let i = 0; i < 100; i++) {
 }
 
 console.log(arr); */
+
+/* let c1 = {
+	x: 5,
+	y: 10
+}
+
+
+let c2 = {
+	x: 'You',
+	y: 'Great'
+}
+
+function printCoordinates() {
+	console.log(this.x + ' ' + this.y);
+}
+
+let c1_func = printCoordinates.bind(c1);
+
+c1_func();
+
+let c2_func = printCoordinates.bind(c2);
+
+c2_func(); */
+
+
+let obj = {
+	num: 0
+};
+
+let obj2 = {
+	num: 3
+};
+
+let addToThis = function (a, b, c) {
+	return this.num + a + b + c;
+}
+
+let arr = [1, 2, 3];
+
+console.log(addToThis.apply(obj, arr));
