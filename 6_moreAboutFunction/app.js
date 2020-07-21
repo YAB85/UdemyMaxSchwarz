@@ -31,13 +31,13 @@ const getComputerChoice = () => {
 };
 
 const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
-	cChoice === pChoice ?
-	RESULT_DRAW :
-	(cChoice === ROCK && pChoice == PAPER) ||
-	(cChoice === PAPER && pChoice === SCISSORS) ||
-	(cChoice === SCISSORS && pChoice === ROCK) ?
-	RESULT_PLAYER_WINS :
-	RESULT_COMPUTER_WINS;
+	cChoice === pChoice
+		? RESULT_DRAW
+		: (cChoice === ROCK && pChoice == PAPER) ||
+			(cChoice === PAPER && pChoice === SCISSORS) ||
+			(cChoice === SCISSORS && pChoice === ROCK)
+			? RESULT_PLAYER_WINS
+			: RESULT_COMPUTER_WINS;
 
 /* {
 		if (cChoice === pChoice) {
@@ -80,28 +80,35 @@ startGameBtn.addEventListener('click', () => {
 	gameIsRunning = false;
 });
 
-
-
 //not related to game
 
-const sumUp = (...numbers) => {
+const sumUp = (resultHandler, ...numbers) => {
+	const validateNumber = number => {
+		return isNaN(number) ? 0 : number;
+	};
+
 	let sum = 0;
 	for (let num of numbers) {
 		sum += num;
 	}
-	return sum;
+	resultHandler(sum);
 };
 
-const subtractUp = function () {
+const showResult = result => {
+	alert('The result after adding all numbers is: ' + result);
+};
+
+const subtractUp = function() {
 	let sum = 0;
-	for (const num of arguments) { // don`t use that
+	for (const num of arguments) {
+		// don`t use that
 		sum -= num;
 	}
 	return sum;
-}
+};
 
-console.log(sumUp(1, 5, 10, -3, 6, 10));
-console.log(sumUp(1, 5, 10, -3, 6, 10, 25, 88));
+sumUp(showResult, 1, 5, 10, -3, 6, 10);
+sumUp(showResult, 1, 5, 10, -3, 6, 10, 25, 88);
 console.log(subtractUp(1, 10, 15, 20));
 
 /* start();
