@@ -1,4 +1,4 @@
-console.log('Hello');
+/* console.log('Hello');
 const h1 = document.getElementById('main-title');
 
 h1.textContent = "Some new title"
@@ -20,4 +20,8 @@ const listItemElements = document.querySelectorAll('li');
 for (const listItemEl of listItemElements) {
 	console.log(listItemEl);
 	listItemEl.style.color = 'red';
-}
+} */
+
+const ul = document.querySelector('ul');
+
+ul.children
