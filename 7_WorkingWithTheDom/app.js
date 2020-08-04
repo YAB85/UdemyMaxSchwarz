@@ -22,6 +22,30 @@ for (const listItemEl of listItemElements) {
 	listItemEl.style.color = 'red';
 } */
 
-const ul = document.querySelector('ul');
+/* const ul = document.querySelector('ul');
 
-ul.children
+const liParent = document.querySelector('li');
+
+ul.children; */
+
+/* const ul = document.body.firstElementChild.nextElementSibling;
+const firstLi = ul.firstElementChild;
+
+console.log(firstLi); */
+
+const section = document.querySelector('section');
+const button = document.querySelector('button');
+section.className = 'red-bg';
+
+section.addEventListener('click', () => {
+	/* if (section.className === 'red-bg visible') {
+		section.className = 'red-bg invisible';
+	} else {
+		section.className = 'red-bg visible';
+	} */
+
+	//section.classList.toggle('visible');
+	section.classList.toggle('invisible');
+});
+
+//section.style.backgroundColor = 'blue';
