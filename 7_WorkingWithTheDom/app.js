@@ -49,3 +49,14 @@ section.addEventListener('click', () => {
 });
 
 //section.style.backgroundColor = 'blue';
+
+const list = document.querySelector('ul');
+
+const newLi = document.createElement('li');
+newLi.textContent = 'Item 4';
+//list.append(newLi);
+
+//list.lastElementChild.before(newLi);
+//const secondLi = list.children[1];
+
+//secondLi.insertAdjacentElement('afterend', newLi);
