@@ -165,3 +165,17 @@ cancelAddModalButton.addEventListener('click', cancelAddMovieHandler);
 backdrop.addEventListener('click', backdropClickHandler);
 
 confirmAddMovieButton.addEventListener('click', addMovieHandler);
+
+/* let user = {
+	name: 'John',
+	hi() {
+		alert(this.name);
+	},
+	bye() {
+		alert('Bye!');
+	}
+};
+
+user.hi();// John
+
+(user.name == 'John' ? user.hi : user.bye)(); */

@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-transform: uppercase;
+}
+
+ul {
+  color: red;
+}
+
+#li {
+  color: blue;
+}
