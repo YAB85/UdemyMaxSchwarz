@@ -3,7 +3,20 @@
   margin: 0;
 }
 
+body {
+  background-color: aquamarine;
+
+}
+
+.header {
+  background-color: teal;
+  border: 2px solid yellowgreen;
+  /* display: flex; */
+}
+
+
 h1 {
+  flex-direction: column;
   text-transform: uppercase;
 }
 
