@@ -160,3 +160,11 @@ console.log(filteredArray);
 const shortArray = prices.filter(p => p > 3);
 
 console.log(shortArray);
+
+let sum = 0;
+
+prices.forEach(price => {
+	sum += price;
+});
+
+console.log(sum);
