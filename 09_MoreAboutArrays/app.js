@@ -161,10 +161,55 @@ const shortArray = prices.filter(p => p > 3);
 
 console.log(shortArray);
 
-let sum = 0;
+/* let sum = 0;
 
 prices.forEach(price => {
 	sum += price;
 });
 
-console.log(sum);
+console.log(sum); */
+
+/* const sum = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
+
+console.log(sum); */
+
+/* const originalArray = [ { price: 10.99 }, { price: 5.99 }, { price: 29.99 } ];
+
+const tranformedArray = originalArray.map(obj => obj.price);
+
+const sum = tranformedArray.reduce((sumVal, curValue) => sumVal + curValue);
+
+console.log(sum); */
+
+const data = 'new york; 10.99; 2000';
+
+const transformedData = data.split(';');
+
+console.log(transformedData);
+
+const nameFragments = [ 'Max', 'Schwarz' ];
+
+const name = nameFragments.join(' ');
+console.log(name);
+
+const copiedNameFragments = [ ...nameFragments ];
+
+copiedNameFragments[2] = 'Name';
+nameFragments.push('Josh');
+console.log(nameFragments);
+
+console.log(copiedNameFragments);
+
+console.log(Math.min(...prices));
+
+const persons = [ { name: 'Max', age: 30 }, { name: 'Manuel', age: 31 } ];
+
+const copiedPersons = persons.map(person => ({
+	name: person.name,
+	age: person.age
+}));
+
+persons.push({ name: 'anna', age: 29 });
+persons[0].age = 31;
+
+console.log(persons, copiedPersons);
