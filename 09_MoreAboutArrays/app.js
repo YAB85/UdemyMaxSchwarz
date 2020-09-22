@@ -181,7 +181,7 @@ const sum = tranformedArray.reduce((sumVal, curValue) => sumVal + curValue);
 
 console.log(sum); */
 
-const data = 'new york; 10.99; 2000';
+/* const data = 'new york; 10.99; 2000';
 
 const transformedData = data.split(';');
 
@@ -213,3 +213,18 @@ persons.push({ name: 'anna', age: 29 });
 persons[0].age = 31;
 
 console.log(persons, copiedPersons);
+ */
+
+const nameData = [ 'Max', 'Scharz', 'Mr', 30 ];
+
+let [ firstName, lastName, ...otherInformation ] = nameData;
+
+console.log(firstName, lastName, otherInformation);
+
+firstName = 'Josh';
+
+console.log(firstName);
+
+nameData[0] = 'Joshua';
+
+console.log(nameData);
