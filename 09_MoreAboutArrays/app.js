@@ -123,7 +123,7 @@ const taxAdjustedPrices = [];
 
 console.log(taxAdjustedPrices);  */
 
-const prices = [ 10.99, 5.99, 3.99, 6.59 ];
+const prices = [10.99, 5.99, 3.99, 6.59];
 const tax = 0.19;
 
 /* const taxAdjustedPrices = prices.map((price, idx, prices) => {
@@ -215,7 +215,7 @@ persons[0].age = 31;
 console.log(persons, copiedPersons);
  */
 
-const nameData = [ 'Max', 'Scharz', 'Mr', 30 ];
+/* const nameData = [ 'Max', 'Scharz', 'Mr', 30 ];
 
 let [ firstName, lastName, ...otherInformation ] = nameData;
 
@@ -227,4 +227,4 @@ console.log(firstName);
 
 nameData[0] = 'Joshua';
 
-console.log(nameData);
+console.log(nameData); */
