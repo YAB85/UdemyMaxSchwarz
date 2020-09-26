@@ -1,13 +1,14 @@
-/* console.log('hi');
+console.log('hi');
 
 const ids = new Set([ 'Hi', 'from', 'set!' ]);
 ids.delete('Hi');
-//ids.add(4);
-//console.log(ids.has(1));
+ids.add(4);
+ids.
+console.log(ids.has(1));
 
 for (const entry of ids.entries()) {
 	console.log(entry);
-} */
+} 
 
 const person1 = { name: 'Max' };
 
@@ -24,3 +25,5 @@ console.log(personData.get(person1));
 for (const entry of personData.entries()) {
 	console.log(entry);
 }
+
+
