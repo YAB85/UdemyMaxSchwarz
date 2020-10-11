@@ -47,10 +47,13 @@ const renderMovies = (filter = '') => {
 
 	filteredMovies.forEach(movie => {
 		const movieEl = document.createElement('li');
-		let text = movie.info.title + ' - ';
-		for (const key in movie.info) {
+		const { info, ...otherProps } = movie;
+		console.log(otherProps); 
+
+		let text = info.title + ' - ';
+		for (const key in info) {
 			if (key !== 'title') {
-				text = text + `${key}: ${movie.info[key]}`;
+				text = text + `${key}: ${info[key]}`;
 			}
 		}
 
@@ -73,7 +76,7 @@ const addMovieHandler = () => {
 			title,
 			[extraName]: extraValue
 		},
-		id: Math.random()
+		id: Math.random().toString(),
 	};
 
 	movies.push(newMovie);
@@ -87,3 +90,26 @@ const searchMovieHandler = () => {
 
 addMovieBtn.addEventListener('click', addMovieHandler);
 searchBtn.addEventListener('click', searchMovieHandler);
+
+/* const person = {
+	name: 'Max',
+	hobbies: ['Sports', 'Cooking']
+};
+
+const anotherPerson = {...person};
+
+person.age = 30;
+anotherPerson.age = 31;
+person.hobbies.push('Coding');
+
+console.log(person);
+console.log(anotherPerson);
+
+
+const person3 = {...person, age: 29, hobbies:[...person.hobbies]};
+
+console.log(person3);
+
+const person2 = Object.assign({}, person);
+
+console.log(person2); */
