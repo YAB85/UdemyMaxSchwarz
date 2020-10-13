@@ -46,13 +46,17 @@ const renderMovies = (filter = '') => {
 	const filteredMovies = !filter ? movies : movies.filter(movie => movie.info.title.includes(filter));
 
 	filteredMovies.forEach(movie => {
-		const movieEl = document.createElement('li');
-		const { info, ...otherProps } = movie;
-		console.log(otherProps); 
+		const movieEl = document.createElement('li');	
+		
 
-		let text = info.title + ' - ';
+		const { info, ...otherProps } = movie;
+		console.log(otherProps);
+		//const {title: movieTitle} = info; 
+		let {getFormattedTitle} = movie;
+		//getFormattedTitle = getFormattedTitle.bind(movie);
+		let text = getFormattedTitle.call(movie) + ' - ';
 		for (const key in info) {
-			if (key !== 'title') {
+			if (key !== 'title' && key !== '_title') {
 				text = text + `${key}: ${info[key]}`;
 			}
 		}
@@ -67,17 +71,32 @@ const addMovieHandler = () => {
 	const extraName = document.getElementById('extra-name').value;
 	const extraValue = document.getElementById('extra-value').value;
 
-	if (title.trim() === '' || extraName.trim() === '' || extraValue.trim() === '') {
+	if (extraName.trim() === '' || extraValue.trim() === '') {
 		return;
 	}
 
 	const newMovie = {
 		info: {
-			title,
+			set title(val) {
+				if(val.trim() === ''){
+					this._title = 'DEFAULT';
+					return;
+				}
+				this._title = val;
+			},
+			get title() {
+				return this._title;
+			},
 			[extraName]: extraValue
 		},
 		id: Math.random().toString(),
+		getFormattedTitle() {
+			return this.info.title.toUpperCase();
+		}
 	};
+
+	newMovie.info.title = title;
+	console.log(newMovie.info.title);
 
 	movies.push(newMovie);
 	renderMovies();
@@ -113,3 +132,13 @@ console.log(person3);
 const person2 = Object.assign({}, person);
 
 console.log(person2); */
+
+/* const members = {
+	teamName: 'Blue Rockets',
+	people: ['Max', 'Manuel'],
+	getTeamMembers() {
+		this.people.forEach(p=> {
+			console.log(p + ' - ' + this.teamName);
+		});
+	}
+}; */
